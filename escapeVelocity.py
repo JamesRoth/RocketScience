@@ -3,8 +3,7 @@
 #escapeVelocity.py - escape velocity for planets
 
 from ggrocket import Rocket, Planet
-from math import radians
-from math import sqrt
+from math import radians, sqrt
 
 # Constants related to earth and physics
 Re=6.371E6
