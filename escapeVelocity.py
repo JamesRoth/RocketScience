@@ -4,6 +4,7 @@
 
 from ggrocket import Rocket, Planet
 from math import radians
+from math import sqrt
 
 # Constants related to earth and physics
 Re=6.371E6
