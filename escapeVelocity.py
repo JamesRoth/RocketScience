@@ -2,7 +2,7 @@
 #3/14/18
 #escapeVelocity.py - escape velocity for planets
 
-from ggrocket import Rockets, Planet
+from ggrocket import Rocket, Planet
 from math import radians
 
 earth=Planet
