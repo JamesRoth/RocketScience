@@ -5,7 +5,7 @@
 from ggrocket import Rocket, Planet
 from math import radians, sqrt, log
 from ggmath import InputButton, Timer, Slider
-tz=Slider((20,400), 0, 5, 0), positioning="physical")`
+tz=Slider((20,400), 0, 5, 0), positioning="physical")
 
 earth = Planet(viewscale=0.0001)  # no gravity to simplify things - not anymore!
 
