@@ -6,7 +6,7 @@ from ggrocket import Rocket, Planet
 from math import radians, sqrt, log
 from ggmath import InputButton, Timer
 
-earth = Planet()  # no gravity to simplify things
+earth = Planet()  # no gravity to simplify things - not anymore!
 
 RocketStarted = False
 StartTime = None    # to keep track of when burn started
