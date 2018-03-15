@@ -74,5 +74,5 @@ start = InputButton((10,400), "START", StartRocket, positioning="physical", size
 tz = Slider((10,450), 0, 5, 0, positioning="physical", leftkey="a", rightkey="d")
 
 #Create and "run" the rocket
-rocket = Rocket(earth, thrust=GetThrust, mass=GetMass, timezoom=tz, heading=radians(90))
+rocket = Rocket(earth, thrust=GetThrust, mass=GetMass, timezoom=tz)
 earth.run(rocket)
