@@ -39,4 +39,7 @@ def StartRocket():
     if not RocketStarted:
         RocketStarted=1
         StartTime=rocket,shiptime
-start=InputButton
+start=InputButton((10, 400), "START", StartRocket, positioning="physical", size=15)
+
+rocket=Rocket(earth, thrust=GetThrust, mass=mp+me)
+earth.run(rocket)
