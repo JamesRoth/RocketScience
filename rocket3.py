@@ -5,7 +5,6 @@
 from ggrocket import Rocket, Planet
 from math import radians, sqrt, log
 from ggmath import InputButton, Timer, Slider
-tz = Slider((10,450), 0, 5, 0, positioning="physical")
 
 earth = Planet(viewscale=0.0001)  # no gravity to simplify things - not anymore!
 
@@ -71,6 +70,8 @@ def GetMass():
 # Create a button for starting the simulation
 # Physical positioning at 10,400 pixels, calls the StartRocket function
 start = InputButton((10,400), "START", StartRocket, positioning="physical", size=15)
+
+tz = Slider((10,450), 0, 5, 0, positioning="physical", leftkey="a", rightkey="d")
 
 #Create and "run" the rocket
 rocket = Rocket(earth, thrust=GetThrust, mass=GetMass, timezoom=tz)
