@@ -26,7 +26,7 @@ mp2 =  92670         # Propellent mass (kg)
 Ftotal2 = 8.01E5     # Total thrust (Newtons)
 tburn2 = 372         # Burn time (seconds)
 # PAYLOAD
-mep = 13150          # Payload mass (kg)
+mep = 8000          # Payload mass (kg)
 
 
 # Predict the final velocity using Tsiolkovsky's Rocket Equation,
@@ -125,5 +125,5 @@ tz = Slider((10,360), 0, 5, 0, positioning="physical", leftkey="a", rightkey="d"
 
 #Create and "run" the rocket
 rocket = Rocket(earth, thrust=GetThrust, mass=GetMass, timezoom=tz)
-earth.run(rocket)
+earth.run(rocket, heading=radians(90))
 
