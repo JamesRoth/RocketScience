@@ -87,7 +87,7 @@ moon = Planet(planetmass=moonmass, radius=moonradius, viewscale=0.02, color=0x20
 
 tz=Slider((10, 300),0,5,0, positioning="physical", leftkey="a", rightkey="d")
 #Create and "run" the rocket
-lander = Lem(moon, altitude=alt, velocity=vel)
+lander = Lem(moon, altitude=alt, velocity=vel, timescale=tz)
 
 moon.run(lander)
 
