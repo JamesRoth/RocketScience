@@ -1,49 +1,6 @@
 #James Roth
 #3/15/18
 #rocket3.py - controlling a rocket
-"""
-from ggrocket import Rocket, Planet
-from math import sqrt, log, radians
-from ggmath import InputButton, Timer
-
-earth=Planet(planetmass=0)
-
-RocketStarted=0
-StartTime=None
-BurnTime=0
-
-me=25600
-mp=395700
-F1D=716000
-N1D=9
-
-Ftotal=F1D*N1D
-tburn=180
-
-vmax=Ftotal*tburn/(me+mp)
-print("Predicted final velocity (Newton's 2nd law), vmax:", vmax, "m/s")
-
-def GetThrust():
-    global BurnTime
-    global RocketStarted
-    if RocketStarted:
-        BurnTime=rocket.shiptime - StartTime
-        if BurnTime>=tburn:
-            RocketStarted=0
-            return 0
-        else:
-            return Ftotal
-def StartRocket():
-    global RocketStarted
-    global StartTime
-    if not RocketStarted:
-        RocketStarted=1
-        StartTime=rocket,shiptime
-start=InputButton((10, 400), "START", StartRocket, positioning="physical", size=15)
-
-rocket=Rocket(earth, thrust=GetThrust, mass=mp+me)
-earth.run(rocket)
-"""
 
 from ggrocket import Rocket, Planet
 from math import radians, sqrt, log
@@ -64,9 +21,10 @@ N1D = 9             # Number of rocket engines
 Ftotal = F1D * N1D  # Total thrust (Newtons)
 tburn = 180         # Burn time (seconds)
 
-# Predict the final velocity based on simple Newtons' 2nd Law
-vmax = Ftotal*tburn/(me+mp)
-print("Predicted final velocity (Newton's 2nd Law), vmax: ", vmax, " m/s")
+# Predict the final velocity using Tsiolkovsky's Rocket Equation
+vmaxre = Ftotal*tburn/mp*log((me+mp)/me)
+print("Predicted final velocity (Rocket Equation), vmax: ", vmaxre, " m/s")
+
 
 # Create a function for determining the rocket thrust
 def GetThrust():
@@ -96,11 +54,23 @@ def StartRocket():
         RocketStarted = True
         # Note the starting time
         StartTime = rocket.shiptime
-        
+
+# Function for calculating the total rocket mass, based on burn time and total
+# propellent mass.
+def GetMass():
+    global RocketStarted
+    if RocketStarted:
+        # calculate empty mass plus a fraction of the propellent mass based on time
+        return me + mp*(tburn-BurnTime)/tburn
+    else:
+        # not started: just return the full pre-launch rocket mass
+        return me + mp
+
+
 # Create a button for starting the simulation
 # Physical positioning at 10,400 pixels, calls the StartRocket function
 start = InputButton((10,400), "START", StartRocket, positioning="physical", size=15)
 
 #Create and "run" the rocket
-rocket = Rocket(earth, thrust=GetThrust, mass=mp+me)
+rocket = Rocket(earth, thrust=GetThrust, mass=GetMass)
 earth.run(rocket)
