@@ -85,7 +85,7 @@ class Lem(Rocket):
 
 moon = Planet(planetmass=moonmass, radius=moonradius, viewscale=0.02, color=0x202020) 
 
-tz=Slider((10, 375),0,5,0, positioning="physical", leftkey="a", rightkey="d")
+tz=Slider((10, 300),0,5,0, positioning="physical", leftkey="a", rightkey="d")
 #Create and "run" the rocket
 lander = Lem(moon, altitude=alt, velocity=vel)
 
