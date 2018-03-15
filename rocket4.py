@@ -6,7 +6,7 @@ from ggrocket import Rocket, Planet
 from math import radians, sqrt, log
 from ggmath import InputButton, Timer, Label, Slider
 
-earth = Planet(viewscale=0.00005)  # no gravity to simplify things
+earth = Planet(viewscale=0.0001)  # no gravity to simplify things
 
 Stage1Started = False
 Stage2Started = False
@@ -125,5 +125,5 @@ tz = Slider((10,360), 0, 5, 0, positioning="physical", leftkey="a", rightkey="d"
 
 #Create and "run" the rocket
 rocket = Rocket(earth, thrust=GetThrust, mass=GetMass, timezoom=tz)
-earth.run(rocket, heading=radians(90))
+earth.run(rocket)
 
