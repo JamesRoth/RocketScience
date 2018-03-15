@@ -18,7 +18,7 @@ F1D=716000
 N1D=9
 
 Ftotal=F1D*N1D
-tbrun=180
+tburn=180
 
 vmax=Ftotal*tburn/(me+mp)
 print("Predicted final velocity (Newton's 2nd law), vmax:", vmax, "m/s")
